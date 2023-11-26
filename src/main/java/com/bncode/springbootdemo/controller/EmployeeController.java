@@ -3,6 +3,7 @@ package com.bncode.springbootdemo.controller;
 import com.bncode.springbootdemo.model.Employee;
 import com.bncode.springbootdemo.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,12 +11,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/employees")
 public class EmployeeController {
+
+    @Qualifier("employeeServiceImpl")
     @Autowired
     private EmployeeService employeeService;
 
     @PostMapping //if using ("/extra") = endpoint would be like /v1/employees/extra
     public Employee saveEmployee(@RequestBody Employee employee) {
-        return employeeService.saveEmployee(employee);
+        return employeeService.save(employee);
     }
 
     @GetMapping

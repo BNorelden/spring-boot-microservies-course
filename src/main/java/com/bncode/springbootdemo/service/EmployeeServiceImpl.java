@@ -14,7 +14,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     List<Employee> employees = new ArrayList<>();
 
     @Override
-    public Employee saveEmployee(Employee employee) {
+    public Employee save(Employee employee) {
         if (employee.getEmployeeId() == null ||
                 employee.getEmailId().isEmpty()) {
             employee.setEmployeeId(UUID.randomUUID().toString());
